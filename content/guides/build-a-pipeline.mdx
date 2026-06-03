@@ -1,4 +1,4 @@
----
+﻿---
 title: Build your first pipeline
 description: Step-by-step guide to building a customer support pipeline with complaint-detector and order-checker agents.
 ---
@@ -17,7 +17,7 @@ Each stage publishes to its own Kafka topic. All agents share pipeline memory th
   Draw your pipeline on paper before writing code. One topic per stage keeps agents decoupled and makes the topology graph easy to read.
 </Tip>
 
-## Step 1 — Plan your pipeline
+## Step 1: Plan your pipeline
 
 Before writing code, define what each agent does:
 
@@ -33,7 +33,7 @@ Before writing code, define what each agent does:
   In this guide we build the first two agents completely. The remaining three follow the same pattern — subscribe, process, write context, publish.
 </Info>
 
-## Step 2 — Create your topics
+## Step 2: Create your topics
 
 Create one topic per pipeline stage. Use your admin JWT or API key:
 
@@ -60,7 +60,7 @@ curl -s "$NEXUS_URL/api/v1/topics" \
   Custom topic names **must** start with `nexus.`. Default Nexus topics (`nexus.research`, etc.) are created automatically on startup.
 </Note>
 
-## Step 3 — Build Agent 1 (complaint-detector)
+## Step 3: Build Agent 1 (complaint-detector)
 
 Create `agents/complaint-detector.py`:
 
@@ -150,7 +150,7 @@ if __name__ == "__main__":
         agent.stop()
 ```
 
-## Step 4 — Build Agent 2 (order-checker)
+## Step 4: Build Agent 2 (order-checker)
 
 Create `agents/order-checker.py`:
 
@@ -225,7 +225,7 @@ if __name__ == "__main__":
         agent.stop()
 ```
 
-## Step 5 — Connect them through Nexus
+## Step 5: Connect them through Nexus
 
 Install the SDK and start both agents in separate terminals:
 
@@ -245,7 +245,7 @@ Both agents register with Nexus, send heartbeats, and appear on the **Agents** p
   Each agent must use a **unique name**. Running two copies of `complaint-detector` with the same name will cause registration conflicts.
 </Warning>
 
-## Step 6 — Trigger the pipeline
+## Step 6: Trigger the pipeline
 
 Start a pipeline run and inject the initial complaint:
 
@@ -276,7 +276,7 @@ Expected flow:
 2. Context store receives `classification` and `order` keys
 3. `order-checker` publishes order status `shipped` to `nexus.support.orders`
 
-## Step 7 — Watch it on the dashboard
+## Step 7: Watch it on the dashboard
 
 Open the dashboard and observe the pipeline live:
 
@@ -286,7 +286,7 @@ Open the dashboard and observe the pipeline live:
 
 <Screenshot caption="Topology view showing complaint-detector and order-checker connected through nexus.support topics" />
 
-## Step 8 — Debug a failed run
+## Step 8: Debug a failed run
 
 If a run fails (agent crash, bad payload, missing order):
 

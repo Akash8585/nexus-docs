@@ -48,3 +48,397 @@ a:not([class]) {
 a:not([class]):hover {
   opacity: 0.85;
 }
+
+/* Hide Nextra permalink anchors (#) on heading hover — keep in DOM for scroll-spy */
+.subheading-anchor {
+  position: absolute !important;
+  width: 1px !important;
+  height: 1px !important;
+  padding: 0 !important;
+  margin: 0 !important;
+  overflow: hidden !important;
+  clip: rect(0, 0, 0, 0) !important;
+  white-space: nowrap !important;
+  border: 0 !important;
+  opacity: 0 !important;
+  pointer-events: none !important;
+}
+
+/* Sidebar — VoltAgent-style navigation */
+.nextra-sidebar {
+  border-right: 1px solid var(--nexus-hairline);
+}
+
+.nextra-sidebar > div:first-child {
+  padding-top: 1rem;
+  padding-bottom: 1rem;
+}
+
+.nextra-sidebar ul {
+  gap: 2px;
+}
+
+/* Section labels (Introduction, More) */
+.nextra-sidebar > div > ul > li[class*='font-semibold'] {
+  font-size: 0.6875rem;
+  font-weight: 600;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: #6b7280 !important;
+  margin-top: 1.5rem;
+  margin-bottom: 0.375rem;
+  padding-left: 0.75rem;
+}
+
+.nextra-sidebar > div > ul > li[class*='font-semibold']:first-child {
+  margin-top: 0;
+}
+
+/* Folder headers */
+.nextra-sidebar li > button {
+  color: var(--nexus-ink) !important;
+  font-weight: 600;
+  background: transparent !important;
+}
+
+.nextra-sidebar li > button:hover {
+  background: rgba(255, 255, 255, 0.04) !important;
+  color: var(--nexus-ink) !important;
+}
+
+/* Inactive page links */
+.nextra-sidebar li:not(.active) > a {
+  color: #8b949e !important;
+  background: transparent !important;
+  font-weight: 400;
+}
+
+.nextra-sidebar li:not(.active) > a:hover {
+  color: var(--nexus-ink) !important;
+  background: rgba(255, 255, 255, 0.04) !important;
+}
+
+/* Active page — green text only; divider highlight handled below for nested items */
+.nextra-sidebar li.active > a,
+.nextra-sidebar li.active > button[data-href] {
+  background: transparent !important;
+  color: var(--nexus-primary) !important;
+  font-weight: 500;
+  border-radius: 0 !important;
+  box-shadow: none !important;
+}
+
+/* Nested menus — single vertical guide line */
+.nextra-sidebar li.open > div > ul,
+.nextra-sidebar ul ul {
+  margin-left: 0.625rem !important;
+  padding-left: 0.75rem !important;
+  border-left: 1px solid var(--nexus-hairline);
+}
+
+.nextra-sidebar ul ul::before {
+  display: none !important;
+}
+
+/* Highlight the guide line itself on the active nested item */
+.nextra-sidebar ul ul li.active {
+  position: relative;
+}
+
+.nextra-sidebar ul ul li.active::before {
+  content: '';
+  position: absolute;
+  left: -0.75rem;
+  top: 0;
+  bottom: 0;
+  width: 2px;
+  background: var(--nexus-primary);
+  transform: translateX(-50%);
+}
+
+.nextra-sidebar ul ul li:not(.active) > a {
+  color: #737373 !important;
+  font-size: 0.8125rem;
+}
+
+/* In-page anchor links under active page */
+.nextra-sidebar li.active > ul li:not(.active) > a {
+  color: #737373 !important;
+  font-size: 0.8125rem;
+}
+
+.nextra-sidebar li.active > ul li.active > a {
+  color: var(--nexus-primary) !important;
+  box-shadow: none !important;
+}
+
+/* Link spacing */
+.nextra-sidebar a,
+.nextra-sidebar button {
+  padding: 0.375rem 0.75rem !important;
+  border-radius: 0 !important;
+}
+
+/* Chevron icons */
+.nextra-sidebar li > button svg {
+  color: #6b7280;
+  opacity: 0.85;
+}
+
+.nextra-sidebar-footer {
+  border-top-color: var(--nexus-hairline) !important;
+}
+
+/* Navbar action buttons */
+.nexus-navbar-actions {
+  display: flex;
+  align-items: center;
+  gap: 0.625rem;
+}
+
+/* Star GitHub pill */
+.nexus-star-github {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.3125rem 0.875rem 0.3125rem 0.375rem;
+  border: 1px solid rgba(255, 255, 255, 0.85);
+  border-radius: 9999px;
+  background: #000;
+  color: #fff;
+  font-size: 0.875rem;
+  font-weight: 500;
+  line-height: 1;
+  text-decoration: none;
+  white-space: nowrap;
+  transition: opacity 0.15s ease;
+}
+
+.nexus-star-github:hover {
+  opacity: 0.88;
+}
+
+.nexus-star-github__github-wrap {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 1.375rem;
+  height: 1.375rem;
+  border-radius: 9999px;
+  background: #fff;
+  color: #000;
+  flex-shrink: 0;
+}
+
+.nexus-star-github__count {
+  min-width: 2rem;
+  text-align: center;
+  font-variant-numeric: tabular-nums;
+}
+
+.nexus-star-github__star {
+  display: inline-flex;
+  color: #fbbf24;
+  flex-shrink: 0;
+}
+
+/* Try Nexus ghost button */
+.nexus-try-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.375rem;
+  padding: 0.4375rem 0.875rem;
+  border: 1px solid var(--nexus-hairline);
+  border-radius: 0.625rem;
+  background: transparent;
+  color: var(--nexus-primary);
+  font-size: 0.875rem;
+  font-weight: 600;
+  line-height: 1.25;
+  text-decoration: none;
+  white-space: nowrap;
+  transition: opacity 0.15s ease, background 0.15s ease;
+}
+
+.nexus-try-btn:hover {
+  opacity: 0.9;
+  background: rgba(0, 217, 146, 0.06);
+}
+
+@media (max-width: 640px) {
+  .nexus-navbar-actions {
+    gap: 0.375rem;
+  }
+
+  .nexus-star-github {
+    padding: 0.25rem 0.625rem 0.25rem 0.3125rem;
+    font-size: 0.8125rem;
+  }
+
+  .nexus-try-btn {
+    padding: 0.375rem 0.625rem;
+    font-size: 0.8125rem;
+  }
+}
+
+/* Right sidebar — Table of Contents */
+.nexus-toc-header {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.625rem;
+}
+
+.nexus-three-column-logo,
+.nexus-toc-list-icon {
+  flex-shrink: 0;
+  color: var(--nexus-ink);
+}
+
+.nexus-toc-header__title {
+  font-size: 0.875rem;
+  font-weight: 600;
+  letter-spacing: 0.01em;
+  color: var(--nexus-ink);
+}
+
+.nextra-toc > div > p {
+  display: flex !important;
+  align-items: center;
+  gap: 0.625rem;
+  padding-top: 1.5rem !important;
+  padding-bottom: 0.75rem !important;
+}
+
+.nextra-toc ul {
+  margin-left: 0;
+  padding-left: 0.5rem !important;
+  padding-top: 0.25rem !important;
+  border-left: none;
+}
+
+.nextra-toc ul li {
+  position: relative;
+  margin-top: 0.5rem !important;
+  margin-bottom: 0.5rem !important;
+}
+
+.nextra-toc ul li a {
+  display: block;
+  color: #737373 !important;
+  font-weight: 400;
+  padding-left: 0.875rem;
+  transform: translateX(0);
+  transition:
+    color 0.25s ease,
+    transform 0.25s ease,
+    padding-left 0.25s ease;
+}
+
+.nextra-toc ul li a:hover {
+  color: var(--nexus-primary) !important;
+}
+
+/* Active section on screen — green + shift left */
+.nextra-toc ul li a[data-active='true'] {
+  color: var(--nexus-primary) !important;
+  font-weight: 600;
+  padding-left: 0.125rem;
+  transform: translateX(-8px);
+}
+
+/* Docs footer */
+.nexus-footer {
+  border-top: 1px solid var(--nexus-hairline);
+  background: var(--nexus-canvas);
+  padding: 3rem max(env(safe-area-inset-right), 1.5rem) 2.5rem max(env(safe-area-inset-left), 1.5rem);
+}
+
+.nexus-footer__inner {
+  display: grid;
+  grid-template-columns: minmax(220px, 1.2fr) 1fr 1fr;
+  gap: 3rem;
+  max-width: var(--nextra-content-width, 90rem);
+  margin: 0 auto;
+}
+
+.nexus-footer__brand {
+  display: flex;
+  flex-direction: column;
+  gap: 0.875rem;
+}
+
+.nexus-footer__logo {
+  display: inline-flex;
+  align-items: center;
+  text-decoration: none;
+}
+
+.nexus-footer__logo:hover {
+  opacity: 0.9;
+}
+
+.nexus-logo {
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  color: var(--nexus-primary);
+}
+
+.nexus-footer__copyright,
+.nexus-footer__license {
+  margin: 0;
+  font-size: 0.8125rem;
+  color: #9ca3af;
+}
+
+.nexus-footer__column {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+.nexus-footer__heading {
+  margin: 0;
+  font-size: 0.9375rem;
+  font-weight: 600;
+  color: var(--nexus-ink);
+}
+
+.nexus-footer__links-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1.5rem;
+}
+
+.nexus-footer__links {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 0.625rem;
+}
+
+.nexus-footer__link {
+  color: #9ca3af;
+  font-size: 0.875rem;
+  text-decoration: none;
+  transition: color 0.15s ease;
+}
+
+.nexus-footer__link:hover {
+  color: var(--nexus-primary);
+}
+
+@media (max-width: 900px) {
+  .nexus-footer__inner {
+    grid-template-columns: 1fr;
+    gap: 2rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .nexus-footer__links-grid {
+    grid-template-columns: 1fr;
+    gap: 0;
+  }
+}

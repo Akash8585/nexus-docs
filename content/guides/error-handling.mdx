@@ -1,11 +1,11 @@
----
+﻿---
 title: Handling failures
 description: Three common failure scenarios in Nexus pipelines and how to recover from each.
 ---
 
 Production multi-agent systems fail. Nexus is designed so failures are **visible, recoverable, and non-destructive**. This guide covers three scenarios you will encounter and the exact steps to resolve each.
 
-## Scenario 1 — Agent crashes mid-task
+## Scenario 1: Agent crashes mid-task
 
 **What happens:** An agent process dies while processing a message — OOM kill, unhandled exception, laptop closed, deployment restart.
 
@@ -33,7 +33,7 @@ python agents/order-checker.py
 
 ---
 
-## Scenario 2 — Message fails after 3 retries
+## Scenario 2: Message fails after 3 retries
 
 **What happens:** An agent throws an error on the same message three times (bad JSON, missing context key, API timeout). Nexus moves the message to the **dead letter queue (DLQ)**.
 
@@ -69,7 +69,7 @@ After fixing `policy-checker` to always write context, retry the DLQ message fro
 
 ---
 
-## Scenario 3 — All agents of a type are down
+## Scenario 3: All agents of a type are down
 
 **What happens:** Every instance of `order-checker` is offline — deployment mistake, bad release, weekend shutdown.
 

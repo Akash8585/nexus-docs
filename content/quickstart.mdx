@@ -1,9 +1,9 @@
----
+﻿---
 title: Quickstart
 description: From zero to running agents in under 30 minutes
 ---
 
-## Step 1 — Prerequisites
+## Step 1: Prerequisites
 
 You need the following installed before you start:
 
@@ -17,7 +17,7 @@ You need the following installed before you start:
   A Groq or OpenAI API key is optional. You only need one if you run the demo pipeline in Step 9.
 </Note>
 
-## Step 2 — Clone and start
+## Step 2: Clone and start
 
 Clone the repository and start the stack:
 
@@ -47,7 +47,7 @@ nexus-bus         Up (healthy)
   The Nexus Bus API runs at `http://localhost:8000`. Kafka UI is at `http://localhost:8080` for debugging.
 </Tip>
 
-## Step 3 — Open the dashboard
+## Step 3: Open the dashboard
 
 Open [http://localhost:3000](http://localhost:3000) in your browser.
 
@@ -59,13 +59,13 @@ You will see the Nexus landing page. Click **Get Started** to create your admin 
   If the dashboard is not running, start it separately: `cd dashboard && npm install && npm run dev`.
 </Note>
 
-## Step 4 — Create admin account
+## Step 4: Create admin account
 
 Fill in your name, email, and password.
 
 The first account created is automatically the **Admin**. Log in and you will land on the dashboard home — empty until you connect agents.
 
-## Step 5 — Generate an API key
+## Step 5: Generate an API key
 
 1. Go to **Settings → API Keys → Generate New Key**
 2. Give it a name like `my-agents`
@@ -77,7 +77,7 @@ The first account created is automatically the **Admin**. Log in and you will la
 
 Agents send this key in every SDK request: `Authorization: Bearer nxs_live_sk_...`
 
-## Step 6 — Install the SDK
+## Step 6: Install the SDK
 
 <Tabs items={['Python', 'JavaScript']}>
   <Tabs.Tab>
@@ -100,7 +100,7 @@ cd sdk/python && pip install -e ".[dev]"
 cd sdk/javascript && npm install
 ```
 
-## Step 7 — Connect your first agent
+## Step 7: Connect your first agent
 
 <Tabs items={['Python', 'JavaScript']}>
   <Tabs.Tab>
@@ -153,7 +153,7 @@ Replace `nxs_live_sk_YOUR_KEY` with the key you copied in Step 5.
   Use `agent.context.get(correlation_id, key)` and `agent.context.set(correlation_id, key, value)` to share data between agents in a pipeline.
 </Tip>
 
-## Step 8 — Verify it works
+## Step 8: Verify it works
 
 Open [http://localhost:3000/dashboard/agents](http://localhost:3000/dashboard/agents).
 
@@ -163,7 +163,7 @@ You should see your agent appear as a green card within a few seconds.
   Your agent is connected to Nexus. It will receive messages published to `nexus.research` automatically.
 </Tip>
 
-## Step 9 — Run the demo (optional)
+## Step 9: Run the demo (optional)
 
 <Info>
   The included demo runs 4 agents end-to-end to verify Nexus is working correctly on your machine. This is a verification step — not a requirement.

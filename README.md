@@ -1,25 +1,35 @@
 # Nexus Documentation (Nextra)
 
-Self-hosted documentation site built with [Nextra 4](https://nextra.site). Styled with Nexus brand tokens from `DESIGN.md` (`#00D992` primary, `#101010` canvas).
+Self-hosted documentation site built with [Nextra 4](https://nextra.site). Styled with Nexus brand tokens from `DESIGN.md` (`#00D992` primary, `#101010` canvas). `DESIGN.md` is gitignored and kept local for reference.
 
 ## Run locally
 
 ```bash
-cd docs
 npm install
 npm run dev
 ```
 
 Open **http://localhost:3001**
 
-The dashboard landing page links here. Run the dashboard separately on port 3000.
+The dev server runs on port **3001** so it can sit alongside the Nexus dashboard on port **3000**. Run the dashboard separately when you need both.
+
+### Port already in use
+
+If `npm run dev` fails with `EADDRINUSE` on port 3001, a previous dev server is still running. On Windows:
+
+```powershell
+netstat -ano | findstr :3001
+taskkill /PID <pid> /F
+npm run dev
+```
+
+Replace `<pid>` with the PID from the `LISTENING` row.
 
 ## Project structure
 
 ```
-docs/
 ├── app/              # Next.js + Nextra layout
-├── content/          # All MDX pages (35 pages)
+├── content/          # All MDX pages
 │   ├── introduction.mdx
 │   ├── quickstart.mdx
 │   ├── concepts/
@@ -31,6 +41,7 @@ docs/
 │   ├── faq.mdx
 │   └── contributing.mdx
 ├── public/           # Logo, favicon
+├── styles/           # Global styles
 └── mdx-components.tsx
 ```
 
@@ -43,7 +54,7 @@ npm run build
 npm run start
 ```
 
-Deploy as a standalone Next.js app (Vercel, Railway, or your VPS).
+Production also serves on port **3001** (`next start --port 3001`). Deploy as a standalone Next.js app (Vercel, Railway, or your VPS).
 
 ## Why Nextra instead of Mintlify?
 

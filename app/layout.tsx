@@ -1,6 +1,7 @@
 import { Head } from 'nextra/components'
 import type { Metadata } from 'next'
 import type { ReactNode } from 'react'
+import { TocScrollHighlight } from './components/toc-scroll-highlight'
 import './globals.css'
 
 export const metadata: Metadata = {
@@ -20,7 +21,10 @@ export default function RootLayout({ children }: { children: ReactNode }) {
         color={{ hue: 160, saturation: 100, lightness: { dark: 42, light: 42 } }}
         backgroundColor={{ dark: '#101010', light: '#fafafa' }}
       />
-      <body>{children}</body>
+      <body>
+        {children}
+        <TocScrollHighlight />
+      </body>
     </html>
   )
 }

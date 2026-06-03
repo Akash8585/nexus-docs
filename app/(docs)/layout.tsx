@@ -1,26 +1,18 @@
-import { Footer, Layout, Navbar } from 'nextra-theme-docs'
+import { Layout, Navbar } from 'nextra-theme-docs'
 import { getPageMap } from 'nextra/page-map'
 import type { ReactNode } from 'react'
+import { DocsFooter } from '../components/docs-footer'
+import { NavbarActions } from '../components/navbar-actions'
+import { NexusLogo } from '../components/nexus-logo'
+import { TocHeader } from '../components/toc-header'
 
 const navbar = (
-  <Navbar
-    logo={
-      <span style={{ fontWeight: 700, letterSpacing: '0.08em', color: '#00D992' }}>
-        NEXUS
-      </span>
-    }
-    projectLink="https://github.com/Akash8585/nexus"
-  />
+  <Navbar logo={<NexusLogo />}>
+    <NavbarActions />
+  </Navbar>
 )
 
-const footer = (
-  <Footer>
-    MIT {new Date().getFullYear()} ©{' '}
-    <a href="https://github.com/Akash8585/nexus" style={{ color: '#00D992' }}>
-      Nexus
-    </a>
-  </Footer>
-)
+const footer = <DocsFooter />
 
 export default async function DocsLayout({ children }: { children: ReactNode }) {
   return (
@@ -28,7 +20,12 @@ export default async function DocsLayout({ children }: { children: ReactNode }) 
       navbar={navbar}
       footer={footer}
       pageMap={await getPageMap()}
-      docsRepositoryBase="https://github.com/Akash8585/nexus/tree/main/docs"
+      editLink={null}
+      feedback={{ content: null }}
+      toc={{
+        title: <TocHeader />,
+        backToTop: false,
+      }}
       nextThemes={{ defaultTheme: 'dark', storageKey: 'nexus-docs-theme' }}
       darkMode
     >
