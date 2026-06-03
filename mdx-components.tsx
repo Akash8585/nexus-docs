@@ -43,42 +43,18 @@ export function StatCard({
   label: string
 }) {
   return (
-    <div
-      style={{
-        border: '1px solid #3d3a39',
-        borderRadius: '8px',
-        background: '#1a1a1a',
-        padding: '1rem',
-        textAlign: 'center',
-      }}
-    >
-      <div style={{ fontSize: '1.75rem', fontWeight: 700, color: '#00d992' }}>{value}</div>
-      <div style={{ fontSize: '0.875rem', color: '#bdbdbd', marginTop: '0.25rem' }}>{label}</div>
+    <div className="nexus-stat-card">
+      <div className="nexus-stat-card__value">{value}</div>
+      <div className="nexus-stat-card__label">{label}</div>
     </div>
   )
 }
 
 export function Screenshot({ caption }: { caption: string }) {
   return (
-    <figure style={{ margin: '1.5rem 0' }}>
-      <div
-        style={{
-          border: '1px solid #3d3a39',
-          borderRadius: '8px',
-          background: '#1a1a1a',
-          minHeight: '200px',
-          display: 'flex',
-          alignItems: 'center',
-          justifyContent: 'center',
-          color: '#8b949e',
-          fontSize: '0.875rem',
-        }}
-      >
-        {caption}
-      </div>
-      <figcaption style={{ textAlign: 'center', color: '#8b949e', marginTop: '0.5rem', fontSize: '0.875rem' }}>
-        {caption}
-      </figcaption>
+    <figure className="nexus-screenshot">
+      <div className="nexus-screenshot__frame">{caption}</div>
+      <figcaption className="nexus-screenshot__caption">{caption}</figcaption>
     </figure>
   )
 }

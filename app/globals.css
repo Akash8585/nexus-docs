@@ -1,48 +1,80 @@
 @import 'nextra-theme-docs/style.css';
 
-/* DESIGN.md tokens: primary #00D992, canvas #101010, ink #f2f2f2, body #bdbdbd, hairline #3d3a39 */
-
+/* Light mode defaults */
 :root {
-  --nexus-primary: #00d992;
-  --nexus-canvas: #101010;
-  --nexus-ink: #f2f2f2;
-  --nexus-body: #bdbdbd;
-  --nexus-hairline: #3d3a39;
+  --color-primary: #00a86b;
+  --color-canvas: #fafafa;
+  --color-ink: #111111;
+  --color-body: #374151;
+  --color-hairline: #e5e7eb;
+  --color-card-bg: #f3f4f6;
+  --color-toc-inactive: #6b7280;
+  --color-sidebar-inactive: #9ca3af;
+  --color-footer-link: #4b5563;
+  --color-label: #d1d5db;
+  --color-sidebar-hover: rgba(0, 0, 0, 0.04);
+  --color-cta-hover: rgba(0, 168, 107, 0.08);
+  --color-star-github-bg: #ffffff;
+  --color-star-github-border: #d1d5db;
+  --color-star-github-text: #111111;
+  --color-star-github-icon-bg: #111111;
+  --color-star-github-icon-fg: #ffffff;
+  --color-accent-yellow: #fbbf24;
 
   --nextra-primary-hue: 160deg;
   --nextra-primary-saturation: 100%;
-  --nextra-primary-lightness: 42%;
+  --nextra-primary-lightness: 33%;
+  --nextra-bg: 250 250 250;
+
+  color-scheme: light;
 }
 
-html {
+/* Dark mode */
+.dark {
+  --color-primary: #00d992;
+  --color-canvas: #101010;
+  --color-ink: #f2f2f2;
+  --color-body: #bdbdbd;
+  --color-hairline: #3d3a39;
+  --color-card-bg: #1a1a1a;
+  --color-toc-inactive: #737373;
+  --color-sidebar-inactive: #8b949e;
+  --color-footer-link: #9ca3af;
+  --color-label: #6b7280;
+  --color-sidebar-hover: rgba(255, 255, 255, 0.04);
+  --color-cta-hover: rgba(0, 217, 146, 0.06);
+  --color-star-github-bg: #000000;
+  --color-star-github-border: rgba(255, 255, 255, 0.85);
+  --color-star-github-text: #ffffff;
+  --color-star-github-icon-bg: #ffffff;
+  --color-star-github-icon-fg: #000000;
+
+  --nextra-primary-lightness: 42%;
+  --nextra-bg: 16 16 16;
+
   color-scheme: dark;
 }
 
-html.dark,
-html:not(.light) {
-  --nextra-bg: 16 16 16;
-}
-
 body {
-  background-color: var(--nexus-canvas);
-  color: var(--nexus-body);
+  background-color: var(--color-canvas);
+  color: var(--color-body);
 }
 
 .nextra-body h1,
 .nextra-body h2,
 .nextra-body h3,
 .nextra-body h4 {
-  color: var(--nexus-ink);
+  color: var(--color-ink);
 }
 
 .nextra-border,
 .x\:border-gray-200,
 .x\:dark\:border-neutral-800 {
-  border-color: var(--nexus-hairline) !important;
+  border-color: var(--color-hairline) !important;
 }
 
 a:not([class]) {
-  color: var(--nexus-primary);
+  color: var(--color-primary);
 }
 
 a:not([class]):hover {
@@ -64,9 +96,9 @@ a:not([class]):hover {
   pointer-events: none !important;
 }
 
-/* Sidebar — VoltAgent-style navigation */
+/* Sidebar */
 .nextra-sidebar {
-  border-right: 1px solid var(--nexus-hairline);
+  border-right: 1px solid var(--color-hairline);
 }
 
 .nextra-sidebar > div:first-child {
@@ -78,13 +110,12 @@ a:not([class]):hover {
   gap: 2px;
 }
 
-/* Section labels (Introduction, More) */
 .nextra-sidebar > div > ul > li[class*='font-semibold'] {
   font-size: 0.6875rem;
   font-weight: 600;
   letter-spacing: 0.06em;
   text-transform: uppercase;
-  color: #6b7280 !important;
+  color: var(--color-label) !important;
   margin-top: 1.5rem;
   margin-bottom: 0.375rem;
   padding-left: 0.75rem;
@@ -94,53 +125,48 @@ a:not([class]):hover {
   margin-top: 0;
 }
 
-/* Folder headers */
 .nextra-sidebar li > button {
-  color: var(--nexus-ink) !important;
+  color: var(--color-ink) !important;
   font-weight: 600;
   background: transparent !important;
 }
 
 .nextra-sidebar li > button:hover {
-  background: rgba(255, 255, 255, 0.04) !important;
-  color: var(--nexus-ink) !important;
+  background: var(--color-sidebar-hover) !important;
+  color: var(--color-ink) !important;
 }
 
-/* Inactive page links */
 .nextra-sidebar li:not(.active) > a {
-  color: #8b949e !important;
+  color: var(--color-sidebar-inactive) !important;
   background: transparent !important;
   font-weight: 400;
 }
 
 .nextra-sidebar li:not(.active) > a:hover {
-  color: var(--nexus-ink) !important;
-  background: rgba(255, 255, 255, 0.04) !important;
+  color: var(--color-ink) !important;
+  background: var(--color-sidebar-hover) !important;
 }
 
-/* Active page — green text only; divider highlight handled below for nested items */
 .nextra-sidebar li.active > a,
 .nextra-sidebar li.active > button[data-href] {
   background: transparent !important;
-  color: var(--nexus-primary) !important;
+  color: var(--color-primary) !important;
   font-weight: 500;
   border-radius: 0 !important;
   box-shadow: none !important;
 }
 
-/* Nested menus — single vertical guide line */
 .nextra-sidebar li.open > div > ul,
 .nextra-sidebar ul ul {
   margin-left: 0.625rem !important;
   padding-left: 0.75rem !important;
-  border-left: 1px solid var(--nexus-hairline);
+  border-left: 1px solid var(--color-hairline);
 }
 
 .nextra-sidebar ul ul::before {
   display: none !important;
 }
 
-/* Highlight the guide line itself on the active nested item */
 .nextra-sidebar ul ul li.active {
   position: relative;
 }
@@ -152,41 +178,38 @@ a:not([class]):hover {
   top: 0;
   bottom: 0;
   width: 2px;
-  background: var(--nexus-primary);
+  background: var(--color-primary);
   transform: translateX(-50%);
 }
 
 .nextra-sidebar ul ul li:not(.active) > a {
-  color: #737373 !important;
+  color: var(--color-toc-inactive) !important;
   font-size: 0.8125rem;
 }
 
-/* In-page anchor links under active page */
 .nextra-sidebar li.active > ul li:not(.active) > a {
-  color: #737373 !important;
+  color: var(--color-toc-inactive) !important;
   font-size: 0.8125rem;
 }
 
 .nextra-sidebar li.active > ul li.active > a {
-  color: var(--nexus-primary) !important;
+  color: var(--color-primary) !important;
   box-shadow: none !important;
 }
 
-/* Link spacing */
 .nextra-sidebar a,
 .nextra-sidebar button {
   padding: 0.375rem 0.75rem !important;
   border-radius: 0 !important;
 }
 
-/* Chevron icons */
 .nextra-sidebar li > button svg {
-  color: #6b7280;
+  color: var(--color-label);
   opacity: 0.85;
 }
 
 .nextra-sidebar-footer {
-  border-top-color: var(--nexus-hairline) !important;
+  border-top-color: var(--color-hairline) !important;
 }
 
 /* Navbar action buttons */
@@ -196,16 +219,15 @@ a:not([class]):hover {
   gap: 0.625rem;
 }
 
-/* Star GitHub pill */
 .nexus-star-github {
   display: inline-flex;
   align-items: center;
   gap: 0.5rem;
   padding: 0.3125rem 0.875rem 0.3125rem 0.375rem;
-  border: 1px solid rgba(255, 255, 255, 0.85);
+  border: 1px solid var(--color-star-github-border);
   border-radius: 9999px;
-  background: #000;
-  color: #fff;
+  background: var(--color-star-github-bg);
+  color: var(--color-star-github-text);
   font-size: 0.875rem;
   font-weight: 500;
   line-height: 1;
@@ -225,8 +247,8 @@ a:not([class]):hover {
   width: 1.375rem;
   height: 1.375rem;
   border-radius: 9999px;
-  background: #fff;
-  color: #000;
+  background: var(--color-star-github-icon-bg);
+  color: var(--color-star-github-icon-fg);
   flex-shrink: 0;
 }
 
@@ -238,20 +260,19 @@ a:not([class]):hover {
 
 .nexus-star-github__star {
   display: inline-flex;
-  color: #fbbf24;
+  color: var(--color-accent-yellow);
   flex-shrink: 0;
 }
 
-/* Try Nexus ghost button */
 .nexus-try-btn {
   display: inline-flex;
   align-items: center;
   gap: 0.375rem;
   padding: 0.4375rem 0.875rem;
-  border: 1px solid var(--nexus-hairline);
+  border: 1px solid var(--color-hairline);
   border-radius: 0.625rem;
   background: transparent;
-  color: var(--nexus-primary);
+  color: var(--color-primary);
   font-size: 0.875rem;
   font-weight: 600;
   line-height: 1.25;
@@ -262,7 +283,7 @@ a:not([class]):hover {
 
 .nexus-try-btn:hover {
   opacity: 0.9;
-  background: rgba(0, 217, 146, 0.06);
+  background: var(--color-cta-hover);
 }
 
 @media (max-width: 640px) {
@@ -281,24 +302,28 @@ a:not([class]):hover {
   }
 }
 
-/* Right sidebar — Table of Contents */
+/* Table of Contents */
 .nexus-toc-header {
   display: inline-flex;
   align-items: center;
   gap: 0.625rem;
 }
 
-.nexus-three-column-logo,
 .nexus-toc-list-icon {
   flex-shrink: 0;
-  color: var(--nexus-ink);
+  color: var(--color-ink);
+}
+
+.nexus-three-column-logo {
+  flex-shrink: 0;
+  color: var(--color-primary);
 }
 
 .nexus-toc-header__title {
   font-size: 0.875rem;
   font-weight: 600;
   letter-spacing: 0.01em;
-  color: var(--nexus-ink);
+  color: var(--color-ink);
 }
 
 .nextra-toc > div > p {
@@ -324,7 +349,7 @@ a:not([class]):hover {
 
 .nextra-toc ul li a {
   display: block;
-  color: #737373 !important;
+  color: var(--color-toc-inactive) !important;
   font-weight: 400;
   padding-left: 0.875rem;
   transform: translateX(0);
@@ -335,12 +360,11 @@ a:not([class]):hover {
 }
 
 .nextra-toc ul li a:hover {
-  color: var(--nexus-primary) !important;
+  color: var(--color-primary) !important;
 }
 
-/* Active section on screen — green + shift left */
 .nextra-toc ul li a[data-active='true'] {
-  color: var(--nexus-primary) !important;
+  color: var(--color-primary) !important;
   font-weight: 600;
   padding-left: 0.125rem;
   transform: translateX(-8px);
@@ -348,8 +372,8 @@ a:not([class]):hover {
 
 /* Docs footer */
 .nexus-footer {
-  border-top: 1px solid var(--nexus-hairline);
-  background: var(--nexus-canvas);
+  border-top: 1px solid var(--color-hairline);
+  background: var(--color-canvas);
   padding: 3rem max(env(safe-area-inset-right), 1.5rem) 2.5rem max(env(safe-area-inset-left), 1.5rem);
 }
 
@@ -380,14 +404,14 @@ a:not([class]):hover {
 .nexus-logo {
   font-weight: 700;
   letter-spacing: 0.08em;
-  color: var(--nexus-primary);
+  color: var(--color-primary);
 }
 
 .nexus-footer__copyright,
 .nexus-footer__license {
   margin: 0;
   font-size: 0.8125rem;
-  color: #9ca3af;
+  color: var(--color-footer-link);
 }
 
 .nexus-footer__column {
@@ -400,7 +424,7 @@ a:not([class]):hover {
   margin: 0;
   font-size: 0.9375rem;
   font-weight: 600;
-  color: var(--nexus-ink);
+  color: var(--color-ink);
 }
 
 .nexus-footer__links-grid {
@@ -419,14 +443,58 @@ a:not([class]):hover {
 }
 
 .nexus-footer__link {
-  color: #9ca3af;
+  color: var(--color-footer-link);
   font-size: 0.875rem;
   text-decoration: none;
   transition: color 0.15s ease;
 }
 
 .nexus-footer__link:hover {
-  color: var(--nexus-primary);
+  color: var(--color-primary);
+}
+
+/* MDX custom components */
+.nexus-stat-card {
+  border: 1px solid var(--color-hairline);
+  border-radius: 8px;
+  background: var(--color-card-bg);
+  padding: 1rem;
+  text-align: center;
+}
+
+.nexus-stat-card__value {
+  font-size: 1.75rem;
+  font-weight: 700;
+  color: var(--color-primary);
+}
+
+.nexus-stat-card__label {
+  font-size: 0.875rem;
+  color: var(--color-body);
+  margin-top: 0.25rem;
+}
+
+.nexus-screenshot {
+  margin: 1.5rem 0;
+}
+
+.nexus-screenshot__frame {
+  border: 1px solid var(--color-hairline);
+  border-radius: 8px;
+  background: var(--color-card-bg);
+  min-height: 200px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--color-sidebar-inactive);
+  font-size: 0.875rem;
+}
+
+.nexus-screenshot__caption {
+  text-align: center;
+  color: var(--color-sidebar-inactive);
+  margin-top: 0.5rem;
+  font-size: 0.875rem;
 }
 
 @media (max-width: 900px) {

@@ -15,11 +15,11 @@ export const metadata: Metadata = {
 
 export default function RootLayout({ children }: { children: ReactNode }) {
   return (
-    <html lang="en" dir="ltr" suppressHydrationWarning className="dark">
+    <html lang="en" dir="ltr" suppressHydrationWarning>
       <Head
         faviconGlyph="◆"
-        color={{ hue: 160, saturation: 100, lightness: { dark: 42, light: 42 } }}
-        backgroundColor={{ dark: '#101010', light: '#fafafa' }}
+        color={{ hue: 160, saturation: 100, lightness: { dark: 42, light: 33 } }}
+        backgroundColor={{ dark: '#101010', light: '#FAFAFA' }}
       />
       <body>
         {children}

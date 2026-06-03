@@ -1,6 +1,7 @@
 import { Layout, Navbar } from 'nextra-theme-docs'
 import { getPageMap } from 'nextra/page-map'
 import type { ReactNode } from 'react'
+import themeConfig from '../../theme.config'
 import { DocsFooter } from '../components/docs-footer'
 import { NavbarActions } from '../components/navbar-actions'
 import { NexusLogo } from '../components/nexus-logo'
@@ -26,8 +27,8 @@ export default async function DocsLayout({ children }: { children: ReactNode }) 
         title: <TocHeader />,
         backToTop: false,
       }}
-      nextThemes={{ defaultTheme: 'dark', storageKey: 'nexus-docs-theme' }}
-      darkMode
+      nextThemes={themeConfig.nextThemes}
+      darkMode={themeConfig.darkMode}
     >
       {children}
     </Layout>
