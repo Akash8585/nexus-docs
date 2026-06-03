@@ -1,7 +1,7 @@
 import nextra from 'nextra'
 
 const withNextra = nextra({
-  search: true,
+  search: { codeblocks: false },
   defaultShowCopyCode: true,
 })
 
